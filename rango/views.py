@@ -70,11 +70,11 @@ def add_page(request, category_name_slug):
         category = None
 
     form = PageForm()
-    if request.method =='POST':
+    if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
             if category:
-                page = form.save(commit=True)
+                page = form.save(commit=False)
                 page.category = category
                 page.views = 0
                 page.save()
